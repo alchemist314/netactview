@@ -37,7 +37,8 @@
 #include "net.h"
 
 GladeXML *GladeXml = NULL;
-
+int globalARGC;
+char **globalARGV;
 
 static void on_aboutdialog_url_activated (GtkAboutDialog *about, const gchar *url, 
 										 gpointer data)
@@ -55,14 +56,14 @@ static void on_aboutdialog_email_activated (GtkAboutDialog *about, const gchar *
 }
 
 
-int
-main (int argc, char *argv[])
+int main (int argc, char *argv[])
 {
+	globalARGC = argc;
+	globalARGV = argv;
 	GtkWidget *window;
 	GnomeProgram *program;
 	GOptionContext *option_context;
-	
-	g_type_init();
+		g_type_init();
 	g_thread_init(NULL);
 	
 #ifdef ENABLE_NLS

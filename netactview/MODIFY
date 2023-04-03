@@ -1,0 +1,4 @@
+2023-04-03 Modified by Grigoriy Golovanov <magentrum@gmail.com>
+ * src/main.c, src/mainwindow.c: Adding features to save network state into a file
+                                 passing through a command line argument.
+ * src/mainwidows.c: change color "established connections" to lightgreen.

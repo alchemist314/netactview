@@ -45,6 +45,9 @@
 #include <glib/gi18n.h>
 #include <gconf/gconf-client.h>
 
+extern int globalARGC;
+extern char **globalARGV;
+
 
 /*Column data types as used by compare functions*/
 typedef enum
@@ -124,7 +127,7 @@ typedef struct
 #define DEFAULT_CLOSED_SHOW_INT 3
 #define DEFAULT_CLOSED_COLOR "red"
 #define DEFAULT_NEW_SHOW_INT 3
-#define DEFAULT_NEW_COLOR "green"
+#define DEFAULT_NEW_COLOR "lightgreen"
 
 typedef struct
 {
@@ -798,16 +801,37 @@ static gboolean refresh_main_view_on_idle (gpointer data)
 
 static void refresh_connections ()
 {
-	g_mutex_lock(Mwd.refresh_request_lock);
-	Mwd.refresh_requested = TRUE;
-	g_cond_signal(Mwd.refresh_request_cond);
-	g_mutex_unlock(Mwd.refresh_request_lock);
+    // Make sure that we have a path
+    if (globalARGC == 3) {
+	if (strcmp(globalARGV[1],"file")==0) {
+	    // Path to a file where netactiview will collect network connections
+	    char *path = globalARGV[2];
+	    int *write_error;
+	    gboolean new_file = FALSE;
+	    // Save network state to a file
+	    write_saved_data (path,new_file, write_error);
+	}
+    }
+
+    g_mutex_lock(Mwd.refresh_request_lock);
+    Mwd.refresh_requested = TRUE;
+    g_cond_signal(Mwd.refresh_request_cond);
+    g_mutex_unlock(Mwd.refresh_request_lock);
 }
 
 static void manual_refresh_connections ()
 {
-	Mwd.manual_refresh = TRUE;
-	refresh_connections();
+/*
+    // Path to file 
+    char *path = "/opt/CPP/write/log.txt";
+    int *write_error;
+    gboolean new_file = FALSE;
+
+    // Save network state to file
+    write_saved_data (path,new_file, write_error);
+*/
+    Mwd.manual_refresh = TRUE;
+    refresh_connections();
 }
 
 
