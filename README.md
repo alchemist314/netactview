@@ -1,9 +1,9 @@
-<b>!!! This is modified version of Netactiview !!!
-<br>Was added features to continuously automatically save network state into a file through command line argument, for example:</b>
+<b>!!! This is a modified version of the Netactiview program!!!
+<br>Was added feature to continuously automatically save network state to a file through command line argument, for example:</b>
 <br><br>
-<code>./netactiview file /tmp/netstat.log</code>
+<code>./netactiview file /tmp/netstat.log</code> <br><br>(<b>where</b> <code>file</code> <b>is a flag that enables the function to start writing into </b><code>/tmp/netstat.log</code>)
 <br><br>
-<b>Original version of application is here: https://github.com/mihaivzr/netactview</b>
+<b>Original version of the application is here: https://github.com/mihaivzr/netactview</b>
 
 ## ![Icon](https://raw.githubusercontent.com/mihaivzr/netactview/master/netactview/src/netactview-icon.png) Net Activity Viewer ##
 
@@ -14,8 +14,3 @@ This is an alternative project repository kept in sync with the main repository 
 [http://sourceforge.net/projects/netactview](http://sourceforge.net/projects/netactview)  
 
 ![Screenshot](https://raw.githubusercontent.com/mihaivzr/netactview/master/screenshots/netactview-i2.jpg)
-
-
-(2022-08-07, Mihai Varzaru, mihaiv@gmail.com)  
-I need competent and trustable partners to help continue Netactview. Due to an unknown health condition I don't expect to be able to create a proper updated version of Netactview. While I am not aware of required critical patches at the moment, the application needs normal updates to avoid becoming obsolete.  
-https://mihaiv.wordpress.com/2022/08/07/i-need-competent-and-trustable-partners-to-help-continue-a-significant-open-source-project/  
